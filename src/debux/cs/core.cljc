@@ -54,7 +54,7 @@
                    (keys &env))
         opts' (ut/prepend-src-info opts ns line)]
    `(if (ut/debug-enabled? ~ns)
-      (debux.dbgn/dbgn ~form
+      (debux.dbgn/dbgn ~(ut/tag-form-recursively form)
                        (zipmap '~local-ks [~@local-ks])
                        ~(ut/parse-opts opts'))
       ~form)))
